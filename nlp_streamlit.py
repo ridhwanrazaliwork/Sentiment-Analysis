@@ -65,22 +65,21 @@ with st.form("Sentiment Analysis app"):
 
     # Every form must have a submit button.
     new_review = st.text_input('Please type your review here')
-    submitted = st.form_submit_button("Submit")
-    if submitted:
-        for index, text in enumerate(new_review):
+    for index, text in enumerate(new_review):
             # to remove html tags
             new_review = re.sub('<.*?>','',text)
             new_review = re.sub('[^a-zA-Z]',' ',new_review).lower().split()
-
-        # Data preprocessing
-        new_review = tokenizer.texts_to_sequences(new_review)
-        new_review = np.reshape(new_review,(1,len(new_review)))
-        new_review = pad_sequences(new_review,maxlen=178,padding='post', truncating='post')
-        outcome = model.predict(new_review)
-        
-        if outcome == 'positive':
-            st.write('This review is negative')
+            # Data preprocessing
+    new_review = tokenizer.texts_to_sequences(new_review)
+    new_review = np.reshape(new_review,(1,len(new_review)))
+    new_review = pad_sequences(new_review,maxlen=178,padding='post', truncating='post')
+    outcome = model.predict(new_review)
+    review_outcome = ohe.inverse_transform(outcome)[0][0]
+    submitted = st.form_submit_button("Submit")
+    if submitted:
+        if review_outcome == 'positive':
+            st.write('This review is positive')
             st.balloons()
-        else:
+        if review_outcome == 'negative':
             st.write('This review is negative')
             st.snow()
