@@ -2,6 +2,8 @@
 import os
 import pandas as pd
 import re
+import numpy as np
+from tensorflow.keras.preprocessing.text import Tokenizer
 # %%
 # Data loading
 df = pd.read_csv('https://raw.githubusercontent.com/Ankit152/IMDB-sentiment-analysis/master/IMDB-Dataset.csv')
@@ -38,8 +40,7 @@ review_backup = review.copy()
 sentiment_backup = sentiment.copy()
 # %%
 # Data preprocessing
-import numpy as np
-from tensorflow.keras.preprocessing.text import Tokenizer
+
 
 vocab_size = 10000
 oov_token = '<OOV>'
@@ -84,6 +85,7 @@ X_train,X_test,y_train,y_test = train_test_split(padded_review,sentiment,
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 from tensorflow.keras import Input,Sequential
 from tensorflow.keras.layers import  Embedding, Bidirectional
+from tensorflow.keras.utils import plot_model
 
 # X_train = np.expand_dims(X_train,axis=-1)
 # X_test = np.expand_dims(X_test,axis=-1)
@@ -99,6 +101,7 @@ model.add(Bidirectional(LSTM(128)))
 model.add(Dropout(0.3))
 model.add(Dense(2,activation='softmax'))
 model.summary()
+plot_model(model,show_shapes=True,show_layer_names=True)
 
 model.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['acc'])
 
