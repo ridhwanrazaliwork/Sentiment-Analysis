@@ -25,7 +25,7 @@ We provide a set of 25,000 highly polar movie reviews for training and 25,000 fo
 4. If done correctly, this will generate the results
 
 ## Neural Network Model Plot
-![model plot](src/model_plot.png)
+![model plot](src/Model.png)
 
 ## Model Performance on The Test Dataset
 ## Classification Report
