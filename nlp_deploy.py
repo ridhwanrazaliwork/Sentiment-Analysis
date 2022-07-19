@@ -36,7 +36,7 @@ with open(OHE_PATH,'rb') as file:
 
 # new_review = ["Watched It in IMAX, wonderful, epic! no SPOILERS for anyone here. The Movie is truly not as good as Deadpool Part 1, as Part 1 had a trustworthy storyline,  A hero, a Villian, hero has to take revenge from the Villian who did him wrong, But Deadpool 2 is world's Apart, There is no specific Villian Segregated in the Movie, watch it and you'll come to know, The action scenes are totally awesome, while some of the scenes including Gore and blood are cut, The movie is one of the Most ENTERTAINING movie ever produced. It isn't the best superhero movie, it can't even get close to Infinity War. But it is the most enjoyable movie i've ever seen. Lots Of Comedy, Lots of Action, lots of fourth wall breaking humor, Lots of twists and cameos, It's unpredictable and truly enjoyable, but The only drawback of watching this movie is that your lungs will start hurting, beware not to Die Laughing! and also that all entertaining things end within the blink of an eye. Yes it seems like a 10 minute film to me, compared to Infinity war, as It is enjoyed and lacks even a bit of seriousness, whereas Infinity war still has an impression of a Lifelong Infinite Movie That Never Ends. At the End If You're Wondering whether you should watch it or not just Go For It, It is the most entertaining movie in The Recent Times, The Cameos and twists in The Story will blow your mind!"]
 new_review = [input('Please type your review here')]
-st.text_input('Movie title', 'Life of Brian')
+
 for index, text in enumerate(new_review):
     # to remove html tags
     new_review = re.sub('<.*?>','',text)
@@ -53,20 +53,3 @@ outcome = model.predict(new_review)
 print(f'This review is {ohe.inverse_transform(outcome)[0][0]}')
 # %%
 # Streamlit
-with st.form("Heart Attack Predictor App"):
-    chol = st.selectbox('Cholesterol Level: 1: normal, 2: above normal, 3: well above normal', (1,2,3))
-    sys = st.number_input('Systolic BP')
-    dia = st.number_input('Diastolic BP')
-
-    # Every form must have a submit button.
-    submitted = st.form_submit_button("Submit")
-    if submitted:
-        new_data = np.expand_dims([chol,sys,dia],axis=0)
-        outcome = model.predict(new_data)[0]
-        
-        if outcome == 0:
-            st.write('Congrats you are healthy, keep it up')
-            st.balloons()
-        else:
-            st.write('Train Harder!!!')
-            st.snow()
