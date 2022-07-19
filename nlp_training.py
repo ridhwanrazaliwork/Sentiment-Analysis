@@ -147,3 +147,4 @@ with open(OHE_SAVE_PATH,'wb') as file:
 # Model
 MODEL_SAVE_PATH = os.path.join(os.getcwd(), 'model', 'model.h5')
 model.save(MODEL_SAVE_PATH)
+# %%
