@@ -11,7 +11,7 @@ Sentiment analysis, often known as opinion mining, is a natural language process
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white)
 
 # Description
-The dataset provide a set of 25,000 highly polar movie reviews for training and 25,000 for testing. This project is to predict the number of positive and negative reviews using deep learning algorithms with LSTM layer including additional Embedding and Bidirectional layer.
+The dataset provide a set of 35,000 highly polar movie reviews for training and 15,000 for testing. This project is to predict the number of positive and negative reviews using deep learning algorithms with LSTM layer including additional Embedding and Bidirectional layer.
 
 # How to Run the Project
 ## How to Train the model yourself
